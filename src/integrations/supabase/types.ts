@@ -14,7 +14,240 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      dsa_problems: {
+        Row: {
+          created_at: string
+          difficulty: string
+          id: string
+          is_demo: boolean
+          notes: string
+          platform: string
+          revision_date: string | null
+          status: string
+          title: string
+          topic: string
+          updated_at: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          difficulty?: string
+          id?: string
+          is_demo?: boolean
+          notes?: string
+          platform?: string
+          revision_date?: string | null
+          status?: string
+          title: string
+          topic?: string
+          updated_at?: string
+          url?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          difficulty?: string
+          id?: string
+          is_demo?: boolean
+          notes?: string
+          platform?: string
+          revision_date?: string | null
+          status?: string
+          title?: string
+          topic?: string
+          updated_at?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      mock_interviews: {
+        Row: {
+          created_at: string
+          id: string
+          interview_type: string
+          overall_score: number | null
+          questions: Json
+          role: string
+          summary: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          interview_type: string
+          overall_score?: number | null
+          questions?: Json
+          role?: string
+          summary?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          interview_type?: string
+          overall_score?: number | null
+          questions?: Json
+          role?: string
+          summary?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      planner_tasks: {
+        Row: {
+          category: string
+          completed: boolean
+          completed_at: string | null
+          created_at: string
+          description: string
+          due_date: string | null
+          id: string
+          is_demo: boolean
+          priority: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+          description?: string
+          due_date?: string | null
+          id?: string
+          is_demo?: boolean
+          priority?: string
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+          description?: string
+          due_date?: string | null
+          id?: string
+          is_demo?: boolean
+          priority?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          bio: string
+          branch: string
+          college: string
+          created_at: string
+          full_name: string
+          graduation_year: number | null
+          id: string
+          target_roles: string[]
+          updated_at: string
+        }
+        Insert: {
+          bio?: string
+          branch?: string
+          college?: string
+          created_at?: string
+          full_name?: string
+          graduation_year?: number | null
+          id: string
+          target_roles?: string[]
+          updated_at?: string
+        }
+        Update: {
+          bio?: string
+          branch?: string
+          college?: string
+          created_at?: string
+          full_name?: string
+          graduation_year?: number | null
+          id?: string
+          target_roles?: string[]
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      quiz_attempts: {
+        Row: {
+          correct_answers: number
+          created_at: string
+          details: Json
+          duration_seconds: number
+          id: string
+          score: number
+          topic: string
+          total_questions: number
+          user_id: string
+        }
+        Insert: {
+          correct_answers: number
+          created_at?: string
+          details?: Json
+          duration_seconds?: number
+          id?: string
+          score: number
+          topic: string
+          total_questions: number
+          user_id: string
+        }
+        Update: {
+          correct_answers?: number
+          created_at?: string
+          details?: Json
+          duration_seconds?: number
+          id?: string
+          score?: number
+          topic?: string
+          total_questions?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      resume_analyses: {
+        Row: {
+          analysis: Json
+          created_at: string
+          extracted_text: string
+          file_name: string
+          file_path: string
+          file_type: string
+          id: string
+          job_description: string
+          user_id: string
+        }
+        Insert: {
+          analysis?: Json
+          created_at?: string
+          extracted_text?: string
+          file_name: string
+          file_path: string
+          file_type: string
+          id?: string
+          job_description?: string
+          user_id: string
+        }
+        Update: {
+          analysis?: Json
+          created_at?: string
+          extracted_text?: string
+          file_name?: string
+          file_path?: string
+          file_type?: string
+          id?: string
+          job_description?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
