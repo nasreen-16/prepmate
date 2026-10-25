@@ -14,7 +14,7 @@ import {
   User,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -160,12 +160,12 @@ export function UserMenu({ onSignOut }: { onSignOut: () => void }) {
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
 
-  useState(() => {
+  useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
       setEmail(data.user?.email ?? "");
       setName((data.user?.user_metadata?.full_name as string) ?? data.user?.email?.split("@")[0] ?? "");
     });
-  });
+  }, []);
 
   return (
     <DropdownMenu>
@@ -184,8 +184,10 @@ export function UserMenu({ onSignOut }: { onSignOut: () => void }) {
           <div className="truncate text-xs font-normal text-muted-foreground">{email}</div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => (window.location.hash = "", (window.location.pathname = "/profile"))}>
-          <User className="size-4" /> Profile & settings
+        <DropdownMenuItem asChild>
+          <Link to="/profile">
+            <User className="size-4" /> Profile & settings
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem variant="destructive" onClick={onSignOut}>
