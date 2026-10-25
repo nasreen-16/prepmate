@@ -23,6 +23,7 @@ export type Database = {
           notes: string
           platform: string
           revision_date: string | null
+          solved_at: string | null
           status: string
           title: string
           topic: string
@@ -38,6 +39,7 @@ export type Database = {
           notes?: string
           platform?: string
           revision_date?: string | null
+          solved_at?: string | null
           status?: string
           title: string
           topic?: string
@@ -53,6 +55,7 @@ export type Database = {
           notes?: string
           platform?: string
           revision_date?: string | null
+          solved_at?: string | null
           status?: string
           title?: string
           topic?: string

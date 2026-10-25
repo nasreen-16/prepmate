@@ -1,0 +1,1 @@
+alter table public.dsa_problems add column solved_at timestamptz;
