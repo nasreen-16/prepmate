@@ -6,11 +6,15 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const Route = createFileRoute("/auth")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    next: typeof search.next === "string" ? search.next : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Sign in — PrepMate" },
@@ -164,7 +168,7 @@ function AuthPage() {
           ) : (
             <Card className="rounded-3xl border-border bg-card p-1.5 shadow-lift">
               <div className="p-6">
-                <h1 className="font-display text-2xl font-bold">Welcome {checking ? "" : ""}</h1>
+                <h1 className="font-display text-2xl font-bold">Welcome to PrepMate</h1>
                 <p className="mt-1 text-sm text-muted-foreground">Sign in or create your free account to continue.</p>
 
                 <Tabs defaultValue="signin" className="mt-6">
