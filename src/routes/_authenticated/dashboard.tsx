@@ -135,9 +135,6 @@ function DashboardPage() {
     interviewAvg: s.interviews.avgScore,
     resumeScore: s.resume.latestScore,
   });
-  const actions = recommendedActions({ ...{ ...readiness.input }, overdueTasks: s.tasks.overdueCount } as never) ?? [];
-  void actions;
-
   const isEmpty = allTasks.length === 0 && s.dsa.total === 0;
 
   const donutData = [
