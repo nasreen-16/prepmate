@@ -109,6 +109,12 @@ function DsaPage() {
     void queryClient.invalidateQueries({ queryKey: ["dashboard-stats"] });
   };
 
+  const statusMutation = useMutation({
+    mutationFn: (input: { id: string; status: string }) => update({ data: { id: input.id, patch: { status: input.status } } }),
+    onSuccess: invalidate,
+    onError: (e: Error) => toast.error(e.message),
+  });
+
   const [search, setSearch] = useState("");
   const [fTopic, setFTopic] = useState("all");
   const [fDifficulty, setFDifficulty] = useState("all");
@@ -320,7 +326,7 @@ function DsaPage() {
               )}>{p.difficulty}</Badge></span>
               <span className="text-sm text-muted-foreground">{PLATFORM_LABEL[p.platform] ?? p.platform}</span>
               <span>
-                <Select value={p.status} onValueChange={(v) => update.mutate(undefined, { mutationFn: () => update({ data: { id: p.id, patch: { status: v } } }) })}>
+                <Select value={p.status} onValueChange={(v) => statusMutation.mutate({ id: p.id, status: v })}>
                   <SelectTrigger className="h-8 w-[110px] bg-muted/40 text-xs" aria-label={`Status of ${p.title}`}>
                     <SelectValue />
                   </SelectTrigger>
